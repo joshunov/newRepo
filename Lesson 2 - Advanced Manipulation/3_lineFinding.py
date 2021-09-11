@@ -6,7 +6,7 @@ One of the many other things we can do with openCV is find the lines in an image
 import cv2
 import numpy as np
 
-frame = cv2.imread('..\Photos/collage.png')
+frame = cv2.imread('Photos/sudoku.png')
 edges = cv2.Canny(frame,100,200) # This uses the canny edge detector. The 100 and 200 are rather arbitrary parameters; the second should be larger than the first, play around to see what numbers work best for each image.
 
 
