@@ -52,6 +52,7 @@ Choose an option:
 - Challenge: Instead of filtering for the heart, instead filter for a pentagon, look in the file folder!
 - Challenge: Draw the grid lines of the sudoku image by detecting the lines using a Hough transform. Use image sudoku.png from the Github.
 - Challenge: Determine the road lane lines from a given image an drawing line onto them.  Use the provided image lane_img.jpg from the Github as your testing image. 
+
 ## Lesson 3 - Challenge
 - Consider `Faces/usrc_all.png` and `Faces/usrc_cropped.png`. Using the face detection in part 1, tune the face detection so that all the faces in the cropped version are accounted for and there are no extra faces in the uncropped version. (Except for the clock. Apparently the clock looks like a face.)
 - For each detected face (including the clock, I guess) use the imageFrame in `Faces/imageframe.png` to enframe the face, putting the resultant images into an output folder.
