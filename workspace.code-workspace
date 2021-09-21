@@ -4,7 +4,19 @@
 			"path": "."
 		},
 		{
-			"path": "../../../Desktop/Lesson 3 -Faces"
+			"path": "../../../Downloads/python_opencv_workshop_usrc-main 2/Lesson 4 - Hand and Body Tracking"
+		},
+		{
+			"path": "../../../Downloads/python_opencv_workshop_usrc-main 2/Lesson 3 -Faces"
+		},
+		{
+			"path": "../../../Downloads/python_opencv_workshop_usrc-main 2/Photos"
+		},
+		{
+			"path": "../../../Downloads/python_opencv_workshop_usrc-main 2/PoseVideos"
+		},
+		{
+			"path": "../../../Downloads/python_opencv_workshop_usrc-main 2/Faces"
 		}
 	],
 	"settings": {}
