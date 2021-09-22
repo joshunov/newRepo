@@ -9,7 +9,28 @@ for more info, visit:
 https://google.github.io/mediapipe/solutions/hands.html
 '''
 
+def distance_between_points(p1,p2,id,lm):
+    try:
+        if id == p1:
+            id_1x = lm.x
+            id_1y = lm.y
 
+            # print(lm.x)
+            # cv2.circle(draw,(int(lm.x*512),int(lm.y*512)),1,(0,255,0),thickness=-1)
+
+        if id == p2:
+            id_2x = lm.x
+            id_2y = lm.y
+
+        dis = np.sqrt((id_1x-id_2x)**2+(id_1y-id_2y)**2)
+        print(dis)
+        return dis
+
+    except(NameError):
+        return 0
+
+
+draw = np.zeros((512,512,3),dtype='uint8')
 cap = cv2.VideoCapture(0) #use webcam
 
 #black screen
@@ -45,15 +66,25 @@ while True:
             #get hand info
             for id, lm in enumerate(handLms.landmark):
                 #print(id,lm)
+
+                if id == 8:
+            
+
+                # print(lm.x)
+                 cv2.circle(draw,(int(lm.x*512),int(lm.y*512)),4,(0,255,0),thickness=-1)
+
+
+                print(distance_between_points(8,12,id,lm))
+                
+
                 #id - refer to hand point diagram on mediapipe documentation
                 #lm = x,y,z coordinates
                 h,w,c = black_screen.shape #height, width, channels
-                print(h,w,c)
                 cx, cy = int(lm.x*w), int(lm.y*h) #center width, center height
             
                 #make the palm a different colour and size
                 if id ==0: #first landmark
-                    cv2.circle(black_screen, (cx,cy), 3, (0,0,255), cv2.FILLED)
+                    cv2.circle(black_screen, (cx,cy), 10, (255,0,255), cv2.FILLED)
 
             mpDraw.draw_landmarks(black_screen, handLms,mpHands.HAND_CONNECTIONS)
             #HAND_CONNECTIONS returns the hands with connecting lines
@@ -67,6 +98,8 @@ while True:
     (255,0,255),3)
     
     cv2.imshow("Image", img)
+    cv2.imshow("Image", draw)
+
     cv2.imshow("Black screen",black_screen)
 
     #we need to reinitialise the black screen after every frame so we can redraw the finger positions
