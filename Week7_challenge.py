@@ -1,13 +1,15 @@
 #- Hard: Create a paint program that allows you to draw on screen based on how many fingers you're holding up.
+#from sys import last_value
 import cv2
 import mediapipe as mp
 import time
 import numpy as np
 
-'''
-for more info, visit:
-https://google.github.io/mediapipe/solutions/hands.html
-'''
+
+
+
+last_pt = (0,0)               
+
 
 def distance_between_points(p1,p2,id,lm):
     try:
@@ -49,6 +51,8 @@ mpDraw = mp.solutions.drawing_utils
 pTime =0 #previous time
 cTime =0    #current time
 
+last_pt = (0,0)
+
 while True:
     success, img = cap.read()
 
@@ -69,16 +73,18 @@ while True:
 
                 if id == 8:
             
+                # draw
+                    if(last_pt == (0,0)):
+                        curr_point = (int(lm.x*512),int(lm.y*512))
+                        last_pt = curr_point
+                        continue
 
-                # print(lm.x)
-                 cv2.circle(draw,(int(lm.x*512),int(lm.y*512)),4,(0,255,0),thickness=-1)
-
-
-                print(distance_between_points(8,12,id,lm))
+                    curr_point = (int(lm.x*512),int(lm.y*512))
+                    cv2.line(draw,last_pt,curr_point,(0,255,0),thickness=2)
+                    last_pt = curr_point
                 
 
-                #id - refer to hand point diagram on mediapipe documentation
-                #lm = x,y,z coordinates
+                
                 h,w,c = black_screen.shape #height, width, channels
                 cx, cy = int(lm.x*w), int(lm.y*h) #center width, center height
             
