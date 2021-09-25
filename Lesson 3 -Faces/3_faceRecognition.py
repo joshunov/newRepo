@@ -2,10 +2,10 @@ import numpy as np
 import cv2
 import os
 
-haarCascade=cv2.CascadeClassifier('haar_face.xml')
+haarCascade=cv2.CascadeClassifier('Lesson 3 -Faces/haar_face.xml')
 
 people=[]
-DIR=r'..\\Faces\\train'
+DIR=r'Faces/train'
 #create list of names by looping through names of folders
 for i in os.listdir(DIR):
     people.append(i)
@@ -16,13 +16,13 @@ for i in os.listdir(DIR):
 faceRecognizer=cv2.face.LBPHFaceRecognizer_create()
 faceRecognizer.read('face_trained.yml')
 
-img=cv2.imread(r'..\\Faces\\multival.png')
+img=cv2.imread(r'Faces/multival.png')
 
 gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 cv2.imshow('Person',gray)
 
 #detect the face in image
-facesRect=haarCascade.detectMultiScale(gray,scaleFactor=1.1,minNeighbors=4)
+facesRect=haarCascade.detectMultiScale(gray,1.3,4)
   
 for (x,y,w,h) in facesRect:
     faceROI=gray[y:y+h,x:x+w]

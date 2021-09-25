@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img =cv2.imread('../Faces/usrc_all.png')
+img =cv2.imread('Faces/usrc_all.png')
 cv2.imshow('Lady',img)
 
 #convert to greyscale
@@ -10,10 +10,11 @@ gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 cv2.imshow('Lady',gray)
 
 #store the haar face database to haarCascade
-haarCascade=cv2.CascadeClassifier('haar_face.xml')
+haarCascade=cv2.CascadeClassifier('Lesson 3 -Faces/haar_face.xml')
 
 #detect a face and return the rectangular coordinates of the face
-facesRect=haarCascade.detectMultiScale(gray,scaleFactor=1.1,minNeighbors=13)
+facesRect=haarCascade.detectMultiScale(gray,1.3,4) 
+                                 
 #modify minNeighbors to help filter noise
 
 

@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 
 people=[]
 
-DIR=r'..\\Faces\\train'
+DIR=r'/Users/joshuanovick/Documents/GitHub/newRepo/Faces/train'
+
 #create list of names by looping through names of folders
 for i in os.listdir(DIR):
     people.append(i)
@@ -14,7 +15,7 @@ print(people)
 
 
 #store the haar face database to haarCascade
-haarCascade=cv2.CascadeClassifier('haar_face.xml')
+haarCascade=cv2.CascadeClassifier('Lesson 3 -Faces/haar_face.xml')
 
 features = [] #faces
 labels = [] #names for faces
@@ -36,7 +37,7 @@ def create_train():
             gray = cv2.cvtColor(imgArray,cv2.COLOR_BGR2GRAY)
 
             #create rectangle for face
-            facesRect=haarCascade.detectMultiScale(gray,scaleFactor=1.1,minNeighbors=4)
+            facesRect=haarCascade.detectMultiScale(gray,1.3,4)
 
             #grab a region of interest of the face 
             #store in arrays
